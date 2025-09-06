@@ -51,6 +51,14 @@ public class Main {
         }
         return -Recursive(a, -b);
     }
+    public static int Logs(int a, int b) {
+        if (a == 0 || b == 0) return 0;
+        boolean bool = (a < 0) ^ (b < 0);
+        a = Math.abs(a);
+        b = Math.abs(b);
+        int result = (int)Math.round(Math.exp(Math.log(a) + Math.log(b)));
+        return bool ? -result : result;
+    }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -65,6 +73,7 @@ public class Main {
         System.out.println("1 - через сложение");
         System.out.println("2 - через сдвиги");
         System.out.println("3 - через рекурсию");
+        System.out.println("4 - через логарифмы");
         System.out.print("Ваш выбор: ");
         int choice = scanner.nextInt();
         int result;
@@ -74,6 +83,8 @@ public class Main {
             result = Shifts(a, b);
         } else if (choice == 3) {
             result = Recursive(a, b);
+        } else if (choice == 4) {
+            result = Logs(a, b);
         } else {
             System.out.println("Такого нет!");
             scanner.close();
